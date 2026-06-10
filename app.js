@@ -111,16 +111,23 @@ var R = {
     if (b.build_in_progress) pills += '<span class="pill muted">BUILD中</span>';
 
     var st = b.stats || {};
+    // 大きめ表示: hold日数 / 月発生回数 / 年利
+    var highlights = '';
+    if (st.hold_days != null) highlights += '<div class="bf hl"><div class="bk">Hold日数</div><div class="bv hl">' + esc(String(st.hold_days)) + '</div></div>';
+    if (st.monthly_trades != null) highlights += '<div class="bf hl"><div class="bk">月発生</div><div class="bv hl">' + esc(String(st.monthly_trades)) + '</div></div>';
+    if (st.annual_est) highlights += '<div class="bf hl"><div class="bk">年利</div><div class="bv hl">' + esc(st.annual_est) + '</div></div>';
+    // 小さめ chip: 統計細目
     var chips = "";
-    if (st.monthly_trades != null) chips += '<span class="chip">月 <b>' + st.monthly_trades + '</b></span>';
-    if (st.annual_est) chips += '<span class="chip">年利 <b>' + esc(st.annual_est) + '</b></span>';
     if (st.corr_spy != null) chips += '<span class="chip">corr <b>' + st.corr_spy + '</b></span>';
     if (st.r6) chips += '<span class="chip">R6 <b>' + esc(st.r6) + '</b></span>';
     if (st.placebo) chips += '<span class="chip">' + esc(st.placebo) + '</span>';
 
+    var tier = st.tier || "";
+    var tierBadge = tier ? '<span class="tier tier-' + esc(tier.toLowerCase()) + '">' + esc(tier) + '</span>' : '';
     return '<div class="bot-head"><div class="bot-ico" style="border-color:' + b.color + '66">' + esc(b.icon) + '</div>' +
-      '<div style="flex:1"><div class="bot-nm">' + esc(b.name) + '</div><div class="bot-sub">' + esc(b.subtitle) + '</div></div></div>' +
+      '<div style="flex:1"><div class="bot-nm">' + esc(b.name) + ' ' + tierBadge + '</div><div class="bot-sub">' + esc(b.subtitle) + '</div></div></div>' +
       '<div class="bot-pills">' + pills + '</div>' +
+      (highlights ? '<div class="bot-grid highlights">' + highlights + '</div>' : '') +
       '<div class="bot-grid">' +
         '<div class="bf"><div class="bk">Position</div><div class="bv">' + posLine + '</div></div>' +
         '<div class="bf"><div class="bk">P&L</div><div class="bv">' + pnlLine + '</div></div>' +

@@ -183,8 +183,19 @@ tr:last-child td { border-bottom: none; }
 .pill.monitor { color: var(--violet); background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.35); }
 .pill.disabled, .pill.muted { color: var(--faint); background: rgba(255,255,255,.04); border: 1px solid var(--stroke); }
 .bot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; padding-top: 11px; border-top: 1px solid var(--stroke); }
+.bot-grid.highlights { grid-template-columns: repeat(3, 1fr); gap: 6px 10px; padding: 8px 6px; border-top: 1px solid var(--stroke); border-bottom: 1px solid var(--stroke); background: rgba(255,255,255,.025); border-radius: 8px; margin-top: 8px; }
 .bf { font-size: 12px; } .bf .bk { color: var(--faint); font-size: 10px; text-transform: uppercase; letter-spacing: .4px; }
 .bf .bv { font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 1px; }
+.bf.hl .bk { font-size: 10px; color: var(--dim); }
+.bf.hl .bv.hl { font-size: 16px; font-weight: 700; color: var(--txt); margin-top: 2px; }
+/* Tier badge: SSS / SS / S / A / B / C */
+.tier { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .5px; padding: 2px 7px; border-radius: 6px; vertical-align: middle; margin-left: 4px; border: 1px solid; }
+.tier-sss { color: #fff; background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6); border-color: rgba(255,255,255,.4); }
+.tier-ss  { color: #1a1a1a; background: linear-gradient(90deg, #fde68a, #fcd34d); border-color: #d97706; }
+.tier-s   { color: #1a1a1a; background: #fbbf24; border-color: #b45309; }
+.tier-a   { color: #1a1a1a; background: #4ade80; border-color: #15803d; }
+.tier-b   { color: #f0f0f0; background: #3b82f6; border-color: #1d4ed8; }
+.tier-c   { color: #f0f0f0; background: #6b7280; border-color: #374151; }
 .bot-stats { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; padding-top: 10px; border-top: 1px dashed var(--stroke); }
 .chip { font-size: 10.5px; color: var(--dim); background: rgba(255,255,255,.04); border: 1px solid var(--stroke); border-radius: 8px; padding: 3px 8px; }
 .chip b { color: var(--txt); font-weight: 600; }
