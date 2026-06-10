@@ -308,7 +308,8 @@ $("#refresh").addEventListener("click", load);
 document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
 window.addEventListener("resize", moveIndicator);
 load();
-setInterval(load, POLL_MS);
+// 2026-06-10 user request: auto-poll 無効化。 manual refresh button / visibility change / pull-to-refresh のみで更新。
+// setInterval(load, POLL_MS);
 
 /* pull-to-refresh (物理感のある引っ張り) */
 (function () {
