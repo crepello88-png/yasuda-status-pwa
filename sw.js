@@ -1,5 +1,5 @@
 /* sw.js — offline cache. shell=cache-first / status.json=stale-while-revalidate(+last-good). GET のみ。 */
-var CACHE = "yasuda-status-v4";  // 2026-06-10: tier badge / hold display / new bot plugins 反映で bump
+var CACHE = "yasuda-status-v5";  // 2026-06-10: tier 順並び替え + annual_est 統一
 var SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json",
              "icons/icon-192.png", "icons/icon-512.png"];
 
