@@ -91,8 +91,8 @@ var R = {
 
   bot: function (c) {
     var b = c.bot;
-    var statusPill = { live: "LIVE", paper: "PAPER", monitor: "MONITOR", disabled: "DISABLED" }[b.status] || b.status;
-    var dotEmoji = { live: "🟢", paper: "🔵", monitor: "🟣", disabled: "⚪" }[b.status] || "•";
+    var statusPill = { live: "LIVE", paper: "PAPER", monitor: "MONITOR", disabled: "DISABLED", hold: "HOLD" }[b.status] || b.status;
+    var dotEmoji = { live: "🟢", paper: "🔵", monitor: "🟣", disabled: "⚪", hold: "🟡" }[b.status] || "•";
     var pos = (b.positions && b.positions.length) ? b.positions[0] : null;
     var posLine = pos
       ? esc(pos.symbol) + " " + (pos.qty) + "株 @$" + (pos.cost != null ? pos.cost : "—") +
