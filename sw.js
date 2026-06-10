@@ -1,5 +1,5 @@
 /* sw.js — offline cache. shell=cache-first / status.json=stale-while-revalidate(+last-good). GET のみ。 */
-var CACHE = "yasuda-status-v6";  // 2026-06-10: auto-poll 無効化 + gld_usd_hedge annual_est 修正
+var CACHE = "yasuda-status-v7";  // 2026-06-10: gld_bot paper 化 + subtitle 説明強化
 var SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json",
              "icons/icon-192.png", "icons/icon-512.png"];
 
