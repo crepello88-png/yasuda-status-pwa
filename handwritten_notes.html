@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手書きノートまとめ</title>
+<style>
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+       background: #0a0e14; color: #e6e8ed; margin: 0; padding: 16px; line-height: 1.6; }
+h1 { font-size: 20px; color: #06b6d4; margin: 0 0 6px; }
+.subtitle { color: #94a3b8; font-size: 12px; margin-bottom: 24px; }
+.tab { display: flex; gap: 4px; margin-bottom: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tab button { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; padding: 8px 14px; border-radius: 8px;
+              font-size: 13px; white-space: nowrap; cursor: pointer; }
+.tab button.active { background: #06b6d4; color: #0a0e14; border-color: #06b6d4; }
+.section { display: none; }
+.section.active { display: block; }
+.note-card { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+.note-card h3 { margin: 0 0 4px; font-size: 14px; color: #fbbf24; }
+.note-card .sub { font-size: 11px; color: #94a3b8; margin-bottom: 8px; }
+.note-card p { margin: 0 0 8px; font-size: 13px; }
+.kw { display: inline-block; background: #1e293b; color: #e6e8ed; font-size: 11px;
+      padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; border: 1px solid #334155; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px; }
+th { background: #1e293b; color: #06b6d4; text-align: left; padding: 8px; font-weight: 600; border-bottom: 2px solid #334155; }
+td { padding: 8px; border-bottom: 1px solid #1f2937; vertical-align: top; }
+tr:hover td { background: #111827; }
+.warn { background: #422006; color: #fbbf24; padding: 10px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; border: 1px solid #78350f; }
+</style>
+</head>
+<body>
+
+<h1>📝 手書きノートまとめ</h1>
+<div class="subtitle">2026-06-08 / 5 枚 / 安田工業所</div>
+
+<div class="warn">⚠️ 手書きの一部不明瞭、推定で起こしています。原文と異なる場合は修正してください。</div>
+
+<div class="tab">
+  <button class="active" onclick="show('s1')">📷 写真別 5 枚</button>
+  <button onclick="show('s2')">📋 不具合一覧</button>
+  <button onclick="show('s3')">🎯 今後対応計画</button>
+</div>
+
+<!-- 写真別まとめ -->
+<div id="s1" class="section active">
+
+<div class="note-card">
+  <h3>1. リフター不具合 再現テスト</h3>
+  <div class="sub">IMG_0531</div>
+  <p>本来構造はガスケット入りで、上がりにくくなった状態を再現してみた。別タンクで水を入れて、パッキンの無い T (ナット) を締め直して再現。試作改造前はシッカリ感じだった、との所見。</p>
+  <span class="kw">リフター</span><span class="kw">ガスケット</span><span class="kw">パッキン</span><span class="kw">再現テスト</span>
+</div>
+
+<div class="note-card">
+  <h3>2. ボールタップ／浮き玉まわりの改修</h3>
+  <div class="sub">IMG_0535</div>
+  <p>浮き玉から付けるパッキンを 2 基板構成に変更。水を流すと水もれは同程度に減るが、パッキンを 2 倍にしてみる。浮き玉の高さで自然に水を出すか、水位の流量で制御するかの検討。水もれ正常化には O リングが密着して水もれを解消。NBR は耐熱不足 (100→120℃化で不適応)。TFKM (200℃) や FFKM (300℃) への変更で不純が改善。</p>
+  <span class="kw">浮き玉</span><span class="kw">パッキン</span><span class="kw">Oリング</span><span class="kw">NBR→FFKM</span><span class="kw">耐熱</span>
+</div>
+
+<div class="note-card">
+  <h3>3. リフター不具合 (米野案件)</h3>
+  <div class="sub">IMG_0534</div>
+  <p>生産中、リフターが上がらなくなる事象。通常構造はガスケット付。ガスケット上部に質感し、開節部のサイバルスプリングを仕様通り配置。タムセット A 部の「あがり一面」を修正、5/12 が 1mm かしまもち 1mm 異なる。内臓のレイアウトは 2/2/3/2/2/2/2 構成 (ハム)。試作改造前はシッカリ感じだった (再掲)。</p>
+  <span class="kw">リフター</span><span class="kw">タムセット</span><span class="kw">スプリング</span><span class="kw">内臓配置</span>
+</div>
+
+<div class="note-card">
+  <h3>4. 偏まもり／取付ナット／耐圧不良 (米野案件、品質)</h3>
+  <div class="sub">IMG_0533</div>
+  <p>主要原因: ロケット 1 個 / ハーパースポーンレベル 不足、水量不足、金網枠の取付。偏まもりとは: オートジョイント側のアクサが下がる (部品が出ている) → ガス込み多、別側で密が悪く片側押し付けでバルブが性能する。水量不足は水管詰まりを解消することで水量確保。NSO 1,2 関係ない 13 (中心) の水量が足りない。個別件で R が無くなっているものあり、取替必要。</p>
+  <span class="kw">偏まもり</span><span class="kw">取付ナット</span><span class="kw">耐圧</span><span class="kw">水量不足</span><span class="kw">金網枠</span>
+</div>
+
+<div class="note-card">
+  <h3>5. 今後の対応 (まとめ)</h3>
+  <div class="sub">IMG_0532</div>
+  <p>スペアパーツの準備と定期交換 (1 年程度) / ガススプリングの定期交換 / 水もれ対策。リフター不具合: 部品装備対応メーカー協力で補修ヘキ等のツール仕入、半年くらいで取替が望まれる。リフター: O リングを FFKM に取替、ウォーターリーマを順次使用。部品面: オートジョイントの履歴管理 (不明履歴あり)、金網枠の水量残り、エラー水抜きツールの改変、下ダウセットバス面の偏まもりは別途計画 (292/293, 402/403, 262/264)。</p>
+  <span class="kw">今後対応</span><span class="kw">スペアパーツ</span><span class="kw">定期交換</span><span class="kw">FFKM</span><span class="kw">履歴管理</span>
+</div>
+
+</div>
+
+<!-- 不具合一覧 -->
+<div id="s2" class="section">
+<table>
+<thead>
+<tr><th>カテゴリ</th><th>不具合</th><th>主要原因</th><th>現状対応</th><th>今後対策</th><th>参考</th></tr>
+</thead>
+<tbody>
+<tr><td>リフター不具合</td><td>生産中にリフターが上がらなくなる</td><td>通常構造のガスケット配置不良、スプリング配置のずれ、タムセット A 部のあがり面ずれ (1mm 程度)</td><td>ガスケット上部に質感、開節部のスプリングを仕様通り再配置、A 部一面修正</td><td>部品装備対応メーカーから補修ヘキ等のツールを仕入。半年くらいで取替</td><td>0531, 0534, 0532</td></tr>
+<tr><td>水もれ</td><td>浮き玉・パッキンまわりからの水もれ</td><td>パッキン構造の不適合、O リング密着不良、NBR の耐熱不足 (100→120℃ で破綻)</td><td>浮き玉から付けるパッキンを 2 基板構成に変更、O リング密着確認</td><td>O リングを FFKM に取替 (耐熱 300℃)、ウォーターリーマを順次使用</td><td>0535, 0532</td></tr>
+<tr><td>偏まもり (品質)</td><td>オートジョイント側の偏まもり (片側押付け)</td><td>アクサ下がりで部品が出る／別側のガス込み多／片側押付けでバルブが性能</td><td>現状図と通常図で比較、偏まもり構造の確認</td><td>下ダウセットバス面の偏まもりは別途計画 (292/293, 402/403, 262/264)</td><td>0533, 0532</td></tr>
+<tr><td>水量不足</td><td>水量が確保できない (NSO 13 中心系統)</td><td>水管詰まり、金網枠まわり、個別件で R が無くなっている部品あり</td><td>水管詰まり解消、金網枠まわり確認、R 抜けは取替</td><td>金網枠の水量残り確認、エラー水抜きツールの改変、不明履歴の R は取替</td><td>0533, 0532</td></tr>
+<tr><td>耐圧不良</td><td>取付ナット周りの耐圧不足</td><td>ナット締付け不良、パッキン無しでの締め直し時の不足</td><td>別タンクで水入れて T のナット締め直しで再現確認</td><td>パッキン材質変更 (FFKM 含む) と定期交換ルール化</td><td>0531, 0535</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 今後の対応計画 -->
+<div id="s3" class="section">
+<table>
+<thead>
+<tr><th>区分</th><th>項目</th><th>詳細</th><th>備考</th></tr>
+</thead>
+<tbody>
+<tr><td>スペアパーツ</td><td>常備在庫の見直し</td><td>スペアパーツの準備</td><td>定期交換の前提</td></tr>
+<tr><td>スペアパーツ</td><td>年 1 回 定期交換</td><td>スペアパーツ全体を 1 年スパンで交換</td><td>長寿命化と未然防止</td></tr>
+<tr><td>スペアパーツ</td><td>ガススプリング 定期交換</td><td>ガススプリング単体の交換サイクル設定</td><td></td></tr>
+<tr><td>水もれ</td><td>O リング材質変更</td><td>O リング密着確認＋材質変更</td><td>NBR→FFKM</td></tr>
+<tr><td>リフター</td><td>対応メーカー手配</td><td>補修ヘキ等のツール仕入</td><td></td></tr>
+<tr><td>リフター</td><td>半年取替</td><td>半年くらいでの取替が望まれる</td><td></td></tr>
+<tr><td>リフター</td><td>O リング FFKM 化</td><td>O リング材質変更</td><td>耐熱 300℃</td></tr>
+<tr><td>リフター</td><td>ウォーターリーマ使用</td><td>順次使用へ</td><td>導入順序の管理が必要</td></tr>
+<tr><td>部品面</td><td>オートジョイント履歴管理</td><td>不明履歴の対象あり、トレーサビリティ確保</td><td></td></tr>
+<tr><td>部品面</td><td>金網枠 水量残り</td><td>水量内の金網枠まわりの残水を確認</td><td></td></tr>
+<tr><td>部品面</td><td>エラー水抜きツール改変</td><td>作業からのエラーで水を抜くツールを改良</td><td></td></tr>
+<tr><td>部品面</td><td>下ダウセットバス面 偏まもり</td><td>対象ロット 292/293, 402/403, 262/264</td><td>別計画として扱う</td></tr>
+</tbody>
+</table>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
