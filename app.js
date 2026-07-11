@@ -325,4 +325,59 @@ load();
   window.addEventListener("touchend", function () { pulling = false; });
 })();
 
+/* swipe-to-switch-tab (2026-07-11: 横 swipe で prev/next tab 切替) */
+(function () {
+  var startX = 0, startY = 0, tracking = false, swiped = false;
+  var THRESHOLD = 60;   // 水平 px 以上で発火
+  var V_LIMIT = 45;     // 垂直ズレがこれ以上あれば scroll と判定して無視
+
+  function neighborTab(dir) {
+    var data = state.data; if (!data || !data.tabs || !data.tabs.length) return null;
+    var idx = -1;
+    for (var i = 0; i < data.tabs.length; i++) {
+      if (data.tabs[i].id === state.active) { idx = i; break; }
+    }
+    if (idx < 0) return null;
+    var next = idx + dir;
+    if (next < 0 || next >= data.tabs.length) return null;   // 端でループしない (clamp)
+    return data.tabs[next].id;
+  }
+
+  function flash() {
+    var main = document.getElementById("main");
+    if (!main) return;
+    main.style.transition = "opacity 90ms";
+    main.style.opacity = "0.35";
+    setTimeout(function () { main.style.opacity = "1"; }, 100);
+  }
+
+  var main = document.getElementById("main");
+  main.addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    tracking = true;
+    swiped = false;
+  }, { passive: true });
+
+  main.addEventListener("touchmove", function (e) {
+    if (!tracking || swiped) return;
+    var dx = e.touches[0].clientX - startX;
+    var dy = e.touches[0].clientY - startY;
+    if (Math.abs(dy) > V_LIMIT) { tracking = false; return; }   // 縦 scroll と判定
+    if (Math.abs(dx) < THRESHOLD) return;
+    var dir = dx < 0 ? 1 : -1;   // 左 swipe → 次 tab (dir=+1)
+    var nextId = neighborTab(dir);
+    if (nextId) {
+      swiped = true;
+      tracking = false;
+      flash();
+      selectTab(nextId);
+    }
+  }, { passive: true });
+
+  main.addEventListener("touchend", function () { tracking = false; }, { passive: true });
+  main.addEventListener("touchcancel", function () { tracking = false; }, { passive: true });
+})();
+
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function () {});
