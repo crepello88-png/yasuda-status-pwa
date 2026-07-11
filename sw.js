@@ -3,9 +3,9 @@
    2026-07-09 v8: status.json を network-first に変更 (旧 stale-while-revalidate で
    iPhone PWA が古い data 見せ続ける問題を解消)。 network 失敗時のみ cache に退避、
    通常運用では常に fresh を取る。
-   2026-07-11 v9: swipe-to-switch-tab + tab 3 個 disable (tenbagger/jp_value/resurrection)。
+   2026-07-11 v12: strategies tab で Tier B まで full detail 表示
 */
-var CACHE = "yasuda-status-v9";
+var CACHE = "yasuda-status-v12";
 var SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json",
              "icons/icon-192.png", "icons/icon-512.png"];
 
@@ -39,5 +39,4 @@ self.addEventListener("fetch", function (e) {
     );
     return;
   }
-  e.respondWith(caches.match(e.request).then(function (hit) { return hit || fetch(e.request); }));
-});
+  e.resp
