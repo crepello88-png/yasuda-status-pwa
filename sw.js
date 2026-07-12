@@ -3,9 +3,9 @@
    2026-07-09 v8: status.json を network-first に変更 (旧 stale-while-revalidate で
    iPhone PWA が古い data 見せ続ける問題を解消)。 network 失敗時のみ cache に退避、
    通常運用では常に fresh を取る。
-   2026-07-12 v21: 信用倍率 sanity check (100x超は parse bug で除外)
+   2026-07-12 v22: JPX 週次 margin cache lookup (公式 data 優先)
 */
-var CACHE = "yasuda-status-v21";
+var CACHE = "yasuda-status-v22";
 var SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json",
              "icons/icon-192.png", "icons/icon-512.png"];
 
