@@ -3,9 +3,9 @@
    2026-07-09 v8: status.json を network-first に変更 (旧 stale-while-revalidate で
    iPhone PWA が古い data 見せ続ける問題を解消)。 network 失敗時のみ cache に退避、
    通常運用では常に fresh を取る。
-   2026-07-12 v14: 株主構成 lending supply 指標を仕手 Watch に追加
+   2026-07-12 v15: fade_rank (backtest 87%/80%/73% win) 追加、nikkei source 追加
 */
-var CACHE = "yasuda-status-v14";
+var CACHE = "yasuda-status-v15";
 var SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json",
              "icons/icon-192.png", "icons/icon-512.png"];
 
