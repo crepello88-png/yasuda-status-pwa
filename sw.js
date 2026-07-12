@@ -4,8 +4,9 @@
    iPhone PWA が古い data 見せ続ける問題を解消)。 network 失敗時のみ cache に退避、
    通常運用では常に fresh を取る。
    2026-07-12 v22: JPX 週次 margin cache lookup (公式 data 優先)
+   2026-07-12 v23: 信用倍率 ∞ 表示 (完全 buy-only 銘柄用 🔥 marker)
 */
-var CACHE = "yasuda-status-v22";
+var CACHE = "yasuda-status-v23";
 var SHELL = ["./", "index.html", "app.js", "style.css", "manifest.json",
              "icons/icon-192.png", "icons/icon-512.png"];
 
